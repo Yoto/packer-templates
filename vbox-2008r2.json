@@ -32,7 +32,7 @@
         "scripts/Test-Command.ps1"
       ]
     },
-    {//I don't know what it is.
+    {
       "name": "virtualbox-iso-atlas",
       "type": "virtualbox-iso",
       "vboxmanage": [
