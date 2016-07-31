@@ -4,43 +4,12 @@
       "type": "virtualbox-iso",
       "vboxmanage": [
         [ "modifyvm", "{{.Name}}", "--natpf1", "guest_winrm,tcp,,55985,,5985" ],
-        [ "modifyvm", "{{.Name}}", "--memory", "2048" ],
+        [ "modifyvm", "{{.Name}}", "--memory", "1536" ],
         [ "modifyvm", "{{.Name}}", "--vram", "48" ],
-        [ "modifyvm", "{{.Name}}", "--cpus", "2" ]
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ],
       "guest_additions_mode": "{{ user `guest_additions_mode` }}",
       "guest_additions_path": "C:/users/vagrant/VBoxGuestAdditions.iso",
-      "guest_os_type": "Windows2008_64",
-      "headless": "{{ user `headless` }}",
-      "iso_url": "{{ user `iso_url` }}",
-      "iso_checksum": "{{ user `iso_checksum` }}",
-      "iso_checksum_type": "sha1",
-      "communicator": "winrm",
-      "winrm_username": "vagrant",
-      "winrm_password": "vagrant",
-      "winrm_timeout": "12h",
-      "shutdown_command": "a:/PackerShutdown.bat",
-      "shutdown_timeout": "15m",
-      "floppy_files": [
-        "answer_files/2008_r2{{user `core`}}/Autounattend.xml",
-        "scripts/oracle.cer",
-        "scripts/postunattend.xml",
-        "scripts/boxstarter.ps1",
-        "scripts/PackerShutdown.bat",
-        "scripts/package.ps1",
-        "scripts/SetupComplete-2012.cmd",
-        "scripts/Test-Command.ps1"
-      ]
-    },
-    {
-      "name": "virtualbox-iso-atlas",
-      "type": "virtualbox-iso",
-      "vboxmanage": [
-        [ "modifyvm", "{{.Name}}", "--natpf1", "guest_winrm,tcp,,55985,,5985" ],
-        [ "modifyvm", "{{.Name}}", "--memory", "1572" ],
-        [ "modifyvm", "{{.Name}}", "--vram", "36" ],
-        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
-      ],
       "guest_os_type": "Windows2008_64",
       "headless": "{{ user `headless` }}",
       "iso_url": "{{ user `iso_url` }}",
@@ -76,17 +45,8 @@
       "keep_input_artifact": true,
       "output": "windows2008r2min-{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile-windows.template"
-    },
-    {
-      "type": "atlas",
-      "only": ["virtualbox-iso-atlas"],
-      "artifact": "mwrock/Windows2008R2{{user `core`}}",
-      "artifact_type": "vagrant.box",
-      "metadata": {
-        "provider": "virtualbox",
-        "version": "0.5.2"
-      }
-    }]
+    }
+    ]
   ],
   "variables": {
     "core": "",
