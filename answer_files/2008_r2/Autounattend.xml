@@ -89,9 +89,16 @@
                 </Password>
             </AutoLogon>
             <FirstLogonCommands>
+                    <SynchronousCommand wcm:action="add">
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force"</CommandLine>
+                      <Description>Set Execution Policy 64 Bit</Description>
+                      <Order>1</Order>
+                      <RequiresUserInput>true</RequiresUserInput>
+                  </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\boxstarter.ps1</CommandLine>
-                   <Order>1</Order>
+                   <Description>Perform setupping configuration automatically</Description>
+                   <Order>2</Order>
                 </SynchronousCommand>
             </FirstLogonCommands>
         </component>
